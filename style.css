@@ -1,0 +1,221 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: #ffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* header */
+
+.header-wrapper {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(-45deg, rgb(91, 169, 241), rgb(57, 72, 155), rgb(56, 5, 241), rgb(5, 223, 252));
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: backgroundTransition 15s ease-in-out infinite;
+
+} 
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    
+}
+
+.social-media {
+    margin-top: 1rem;
+    display: flex;
+
+}
+
+.social-media a {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 24px;
+    padding: 1rem 4rem;
+    border: 1px solid #ffff;
+    min-width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s cubic-bezier(0.55, 0.025, 0.675, 0.97); 
+}
+
+a:hover {
+    color: rgb(91, 169, 241) ;
+    background-color: #ffff;
+
+}
+
+@keyframes backgroundTransition {
+    0% {
+        background-position: 0% 80%;
+    }
+    50% {
+        background-position: 80% 100%;
+    }
+    100% {
+        background-position: 0% 90%;
+    }
+}
+
+/* MENU HAMBURGUER */
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.checkbox {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 400ms ease-in-out 0s;
+
+    border: 2px solid #ffff;
+    border-style:groove;
+    border-radius: 20%;
+    
+    
+
+}
+
+.checkbox .trace {
+    width: 40px;
+    height: 3px;
+    background-color: #ffff;
+    position: absolute;
+    border-radius: 4px;
+    transition: 0.5s ease-in-out;
+    
+}
+
+.checkbox .trace:nth-child(1) {
+    top: 26px;
+    transform: rotate(0);
+
+}
+
+.checkbox .trace:nth-child(2) {
+    top: 46px; 
+    transform: rotate(0);
+
+}
+
+.checkbox .trace:nth-child(3) {
+    top: 66px;
+    transform: rotate(0);
+
+}
+
+#toggle {
+    display: none;
+    
+}
+
+/*MENU */
+
+.menu {
+    position: absolute;
+    top: 28px;
+    right: 30px;
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px #ffff);
+    z-index: -1;
+    transition: 400ms ease-in-out 0s;
+
+}
+
+.menu-itens {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s;
+    
+}
+
+.menu-itens ul {
+    list-style-type: none;
+}
+
+.menu-itens ul li a {
+    margin: 10px 0;
+    color: rgb(8, 4, 248);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 40px;
+}
+
+/*animacao do menu */
+
+#toggle:checked + .checkbox .trace:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: #0782f5;
+    top: 48px;
+
+}
+
+#toggle:checked + .checkbox .trace:nth-child(2) {
+    transform: translateX(-100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+
+}
+
+#toggle:checked + .checkbox .trace:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: #0782f5;
+    top: 48px;
+    
+}
+
+/*background da caixa que rodeia o menu invisível*/
+#toggle:checked + .checkbox {
+    background-color: #ffff;
+
+}
+
+/* background do menu que abre na animacao*/
+#toggle:checked ~ .menu {
+    box-shadow: 0px 0px 0px 90vmax ivory;
+    border-radius: 50%;
+    z-index: 1;
+
+} 
+
+#toggle:checked ~ .menu-itens {
+    visibility: visible;
+    opacity: 1 ;
+}
